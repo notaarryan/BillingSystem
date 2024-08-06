@@ -4,9 +4,6 @@ public class Menu {
         double itemPrice = 0.0;
 
         return switch (choice) {
-            case 0 -> {
-                yield  itemPrice = 0.0;
-            }
             case 1 -> {
                 yield itemPrice = 12.0;
             }
@@ -46,29 +43,18 @@ public class Menu {
                 yield itemPrice = 6.0;
             }
             default -> {
-                yield itemPrice = 0.0;
+                yield 0.0;
             }
         };
     }
 
     public static double applyCoupon(String couponCode) {
-        double discount = 0.0;
-
-        switch (couponCode) {
-            case "SAVE4": discount = 4.0;
-                break;
-            case "HAPPYHOUR": discount = 5.0;
-                break;
-            case "SPECIAL3OFF": discount = 3.0;
-                break;
-            case "SUNDAY2OFF": discount = 2.0;
-                break;
-            case "GOODSTUDENT": discount = 2.0;
-                break;
-            default: discount = 0.0;
-                break;
-        }
-
-        return discount;
+        return switch (couponCode) {
+            case "SAVE4" -> 4.0;
+            case "HAPPYHOUR" -> 5.0;
+            case "SPECIAL3OFF" -> 3.0;
+            case "SUNDAY2OFF", "GOODSTUDENT" -> 2.0;
+            default -> 0.0;
+        };
     }
 }
